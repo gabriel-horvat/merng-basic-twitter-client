@@ -1,12 +1,20 @@
 import './App.css';
+import { ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from '@apollo/client'; 
+
+const client = new ApolloClient({
+  uri: 'http://localhost:5000',
+  cache: new InMemoryCache()
+});
 
 function App() {
   return (
+    <ApolloProvider client={client}>
     <div className="App">
-      <header className="App-header">
        Whats good world?!
-      </header>
     </div>
+    </ApolloProvider>
+
   );
 }
 
