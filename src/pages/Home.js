@@ -15,7 +15,7 @@ function Home() {
 
         if (loading) return<p>Loading</p>;
         if (error) return <p>ERROR</p>;
-        if (!data) return <p>Not found</p>;
+        if (!data | data === undefined) return <p>Not found</p>;
 
         console.log(error);
 
