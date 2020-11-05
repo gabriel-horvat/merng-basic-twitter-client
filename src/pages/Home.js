@@ -6,14 +6,18 @@ import { FETCH_POSTS_QUERY } from '../util/graphql/index';
 
 
 function Home() {
+
     const {
         loading,
-         data: {getPosts: posts}
+         data, 
+         error
         } = useQuery(FETCH_POSTS_QUERY)
 
-    if (posts) {
-        console.log(posts);
-    }
+        if (loading) return<p>Loading</p>;
+        if (error) return <p>ERROR</p>;
+        if (!data) return <p>Not found</p>;
+
+        console.log(error);
 
     return (
         
@@ -28,8 +32,8 @@ function Home() {
         ): 
         (
             <div>
-            {posts && 
-                posts.map(post => (
+            {data && 
+                data.getPosts.map(post => (
                 <Grid.Column key = {post.id}>
                     <PostCard post = {post} />
                 </Grid.Column>
@@ -39,7 +43,6 @@ function Home() {
       </Grid.Column>
     </Grid.Row>
     </Grid>
-        
     )
 }
 
