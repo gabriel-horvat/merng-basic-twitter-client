@@ -7,9 +7,12 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import SinglePost from './pages/SinglePost'
 import MenuBar from './components/MenuBar';
+import {AuthProvider} from './context/auth';
+
 
 function App() {
   return (
+    <AuthProvider>
     <Router>
               <Container>
               <MenuBar />
@@ -19,6 +22,7 @@ function App() {
           <Route exact path="/posts/:postId" component={SinglePost} />
     </Container>
     </Router>
+    </AuthProvider>
   );
 }
 
